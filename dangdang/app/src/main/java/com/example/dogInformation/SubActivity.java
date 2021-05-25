@@ -11,6 +11,9 @@ import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -18,6 +21,8 @@ import org.jsoup.select.Elements;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserFactory;
 
+import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
@@ -26,6 +31,7 @@ import java.net.URLConnection;
 import java.net.URLEncoder;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -33,6 +39,15 @@ public class SubActivity extends AppCompatActivity {
     // 정보는 맵으로 구현
     // 유기견은 객체(정보를 담고있는)를 포함하는 리스트(10개)로 구현
     APIKEYS keys = new APIKEYS();
+
+    public class youtubeItem {
+        String videoid = "";
+        String title = "";
+        String description = "";
+        String thumbnaiil = "";
+    }
+    ArrayList<youtubeItem> youtubeItemArrayList = new ArrayList<youtubeItem>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +61,7 @@ public class SubActivity extends AppCompatActivity {
                 String keyword = intent.getStringExtra("keyword");
                 String str = getNaverSearch(keyword);
                 String str2 = getAbandonmentSearch();
+                String stryoutube = getYoutubeSearch(keyword);
 
                 Document doc = Jsoup.connect(str).get();
                 Element name = doc.selectFirst("div.headword_title h2.headword");
@@ -118,6 +134,14 @@ public class SubActivity extends AppCompatActivity {
                 final Bitmap B = bitmap1;
                 final String T = PA.toString();
 
+                for(youtubeItem y : youtubeItemArrayList) {
+                    System.out.println("videoID: "+y.videoid);
+                    System.out.println("title: "+y.title);
+                    System.out.println("description: "+y.description);
+                    System.out.println("thumbnail: "+y.thumbnaiil);
+                    System.out.println("-----------------------------------");
+                }
+
 
                 runOnUiThread((Runnable) () -> {
                     TextView headTitle = (TextView) findViewById(R.id.headTitle);
@@ -134,8 +158,6 @@ public class SubActivity extends AppCompatActivity {
             }
         });thread.start();
     }
-
-
 
     public String getNaverSearch(String keyword) {
 
@@ -239,7 +261,7 @@ public class SubActivity extends AppCompatActivity {
         try {
             StringBuilder urlBuilder = new StringBuilder("http://openapi.animal.go.kr/openapi/service/rest/abandonmentPublicSrvc/abandonmentPublic"); /*URL*/
             urlBuilder.append("?" + URLEncoder.encode("serviceKey", "UTF-8") + key); /*Service Key*/
-            urlBuilder.append("&bgnde="+monthago+"&endde="+today+"&upkind=417000&pageNo=1&numOfRows=10");
+            urlBuilder.append("&bgnde="+monthago+"&endde="+today+"&upkind=417000&state=protect&pageNo=1&numOfRows=10");
 
             URL url = new URL(urlBuilder.toString());
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -377,5 +399,54 @@ public class SubActivity extends AppCompatActivity {
             return e.toString();
         }
         return sb.toString();
+    }
+
+    public String getYoutubeSearch(String keyword) throws IOException {
+
+        String apiurl = "https://www.googleapis.com/youtube/v3/search";
+        apiurl += "?key="+keys.youtubekey;
+        apiurl += "&part=snippet&type=video&maxResults=20&videoEmbeddable=true";
+        apiurl += "&q="+URLEncoder.encode(keyword,"UTF-8");
+        StringBuffer response = new StringBuffer();
+        JSONObject youtubejson = null;
+
+        try  {
+            URL url = new URL(apiurl);
+            HttpURLConnection con = (HttpURLConnection) url.openConnection();
+            con.setRequestMethod("GET");
+
+            BufferedReader br = new BufferedReader(new InputStreamReader(con.getInputStream(),"UTF-8"));
+            String inputLine;
+
+            while((inputLine = br.readLine()) != null) {
+                response.append(inputLine);
+                //System.out.println(inputLine);
+            }
+            br.close();
+
+            // 특정 아이템 가져오기
+            // id.videoid, snippet.title, snippet.description
+            // snippet.thumnails.high.url
+            youtubejson = new JSONObject(response.toString());
+            JSONArray items = youtubejson.getJSONArray("items");
+            for (int i = 0; i <items.length();i++ ){
+                JSONObject data = items.getJSONObject(i);
+                youtubeItem it = new youtubeItem();
+                it.videoid = data.getJSONObject("id").getString("videoId");
+                it.title = data.getJSONObject("snippet").getString("title");
+                it.description = data.getJSONObject("snippet").getString("description");
+                it.thumbnaiil = data.getJSONObject("snippet").getJSONObject("thumbnails").getJSONObject("high").getString("url");
+                youtubeItemArrayList.add(it);
+            }
+
+        }catch (IOException e){
+            e.printStackTrace();
+        }catch (JSONException e) {
+            e.printStackTrace();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return response.toString();
+
     }
 }
