@@ -3,6 +3,7 @@ package com.example.dogInformation;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.widget.ImageView;
@@ -72,7 +73,7 @@ public class SubActivity extends AppCompatActivity {
 
         PublicView.setAdapter(padapter);
         YoutubeView.setAdapter(yadapter);
-
+        setVisible(false);
         showProgress("로딩중");
 
         Thread thread = new Thread((Runnable) () -> {
@@ -91,13 +92,19 @@ public class SubActivity extends AppCompatActivity {
 
                     if (finish == 200) {
                         hideProgress();
-
+                        setVisible(true);
                         TextView headTitle = (TextView) findViewById(R.id.head_title);
                         ImageView imageView = (ImageView) findViewById(R.id.main_image);
                         TextView searchResult2 = (TextView) findViewById(R.id.search_result2);
 //
+
                         headTitle.setText(NI.title);
-                        imageView.setImageBitmap(NI.image);
+                        if(NI.image == null){
+
+                            imageCheck(keyword,imageView);
+                        }else{
+                            imageView.setImageBitmap(NI.image);
+                        }
                         searchResult2.setText("\" " + NI.summary + " \"");
 
 
@@ -114,6 +121,39 @@ public class SubActivity extends AppCompatActivity {
             }
         });
         thread.start();
+    }
+
+    public void imageCheck(String keyword, ImageView imageView){
+        System.out.println("imagecheck "+NI.image);
+        System.out.println("keyword "+keyword);
+        if(keyword.equals("entlebucher sennenhund")){
+            System.out.println("사진변경!");
+            imageView.setImageResource(R.drawable.entlebucher_sennenhund);
+        }
+        if(keyword.equals("appenzeller sennenhund")){
+            System.out.println("사진변경!");
+            imageView.setImageResource(R.drawable.appenzeller);
+        }
+        if(keyword.equals("bluetick coonhound")){
+            System.out.println("사진변경!");
+            imageView.setImageResource(R.drawable.bluetick_coonhound);
+        }
+        if(keyword.equals("leonberger")){
+            System.out.println("사진변경!");
+            imageView.setImageResource(R.drawable.leonberger);
+        }
+        if(keyword.equals("mexican hairless")){
+            System.out.println("사진변경!");
+            imageView.setImageResource(R.drawable.mexican_hairless);
+        }
+        if(keyword.equals("redbone coonhound")){
+            System.out.println("사진변경!");
+            imageView.setImageResource(R.drawable.redbone_coonhound);
+        }
+        if(keyword.equals("walker hound")){
+            System.out.println("사진변경!");
+            imageView.setImageResource(R.drawable.treeing_walker_coonhound);
+        }
     }
 
 
@@ -254,6 +294,10 @@ public class SubActivity extends AppCompatActivity {
                 }
             } else {
                 PA = new StringBuilder(str);
+            }
+
+            if(keyword=="entlebucher sennenhund"){
+
             }
 
         } catch (IOException e) {
@@ -451,7 +495,7 @@ public class SubActivity extends AppCompatActivity {
 
         String apiurl = "https://www.googleapis.com/youtube/v3/search";
         apiurl += "?key=" + keys.youtubekey;
-        apiurl += "&part=snippet&type=video&maxResults=10&videoEmbeddable=true";
+        apiurl += "&part=snippet&type=video&maxResults=20&videoEmbeddable=true";
         apiurl += "&q=" + URLEncoder.encode(keyword, "UTF-8");
         StringBuilder response = new StringBuilder();
         JSONObject youtubejson;
@@ -485,13 +529,16 @@ public class SubActivity extends AppCompatActivity {
                 YI.title = data.getJSONObject("snippet").getString("title");
                 YI.description = data.getJSONObject("snippet").getString("description");
                 String thumbnail = data.getJSONObject("snippet").getJSONObject("thumbnails").getJSONObject("high").getString("url");
-
+                System.out.println("thumbnail: "+thumbnail);
                 // 이미지 저장
                 URL iu = new URL(thumbnail);
                 URLConnection conn = iu.openConnection();
                 conn.connect();
                 InputStream is = conn.getInputStream();
                 YI.thumbnail = BitmapFactory.decodeStream(is);
+                int imgWidth = YI.thumbnail.getWidth();
+                System.out.println("가로길이는 "+imgWidth);
+                YI.thumbnail = Bitmap.createBitmap(YI.thumbnail,0,imgWidth * 3 / 32,imgWidth,imgWidth * 9 / 16);
 
                 yadapter.addItem(YI);
             }
