@@ -1,2 +1,12 @@
-# DaengDaengDogam
-Dog kinds classification &amp; searching application
+# OpenAPI 적용한 레이아웃 구현
+
+>> 0602
+
+
+네이버, 공공데이터, 유튜브에서 제공하는 API를 이용하여 정보들을 모아 하나의 레이아웃에서 출력합니다
+
+MainActivity - keyword를 넣어 검색합니다
+              추후에 삭제되는 부분입니다
+              
+SubActivity - 사실상 메인이 되는 부분입니다
+              이름이 변경될 필요가 있습니다
