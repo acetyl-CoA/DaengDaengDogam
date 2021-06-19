@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PublicDetail">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+<!--            <ImageView-->
+<!--                android:id="@+id/public_detail_img"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"/>-->
+
+<!--            ,중성화여부,공고번호,공고시작일,성별,특징,-->
+            <GridLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:columnCount="2"
+                android:layout_below="@+id/public_detail_img">
+                <!-- 유기번호  -->
+                <TextView
+                    android:id="@+id/text_detail_desertionNm"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="2dp"
+                    android:background="#121212"
+                    android:text="유기번호 "
+                    android:textColor="#BDBDBD"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:id="@+id/public_detail_desertionNm"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:background="#d8d8d8"
+                    android:textSize="20dp" />
+                <!-- 공고번호  -->
+                <TextView
+                    android:id="@+id/text_detail_noticeNo"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="2dp"
+                    android:background="#121212"
+                    android:text="공고번호 "
+                    android:textColor="#BDBDBD"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:id="@+id/public_detail_noticeNo"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:background="#d8d8d8"
+                    android:textSize="20dp" />
+                <!-- 중성화여부  -->
+                <TextView
+                    android:id="@+id/text_detail_neuterYn"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="2dp"
+                    android:background="#121212"
+                    android:text="중성화여부 "
+                    android:textColor="#BDBDBD"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:id="@+id/public_detail_neuterYn"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:background="#d8d8d8"
+                    android:textSize="20dp" />
+                <!-- 성별  -->
+                <TextView
+                    android:id="@+id/text_detail_sexCd"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="2dp"
+                    android:background="#121212"
+                    android:text="성별 "
+                    android:textColor="#BDBDBD"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:id="@+id/public_detail_sexCd"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:background="#d8d8d8"
+                    android:textSize="20dp" />
+
+
+                <!-- 나이  -->
+                <TextView
+                    android:id="@+id/text_detail_age"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="2dp"
+                    android:background="#121212"
+                    android:text="나이 "
+                    android:textColor="#BDBDBD"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:id="@+id/public_detail_age"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:background="#d8d8d8"
+                    android:textSize="20dp" />
+
+                <!-- 보호소이름  -->
+                <TextView
+                    android:id="@+id/text_detail_careNm"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="2dp"
+                    android:background="#121212"
+                    android:text="보호소이름 "
+                    android:textColor="#BDBDBD"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:id="@+id/public_detail_careNm"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:background="#d8d8d8"
+                    android:textSize="20dp" />
+                <!-- 보호소전화번호  -->
+                <TextView
+                    android:id="@+id/text_detail_careTel"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="2dp"
+                    android:background="#121212"
+                    android:text="보호소 전화번호 "
+                    android:textColor="#BDBDBD"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:id="@+id/public_detail_careTel"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:background="#d8d8d8"
+                    android:textSize="20dp" />
+
+                <!-- 품종  -->
+                <TextView
+                    android:id="@+id/text_detail_kind"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="2dp"
+                    android:background="#121212"
+                    android:text="품종 "
+                    android:textColor="#BDBDBD"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:id="@+id/public_detail_kindcd"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:background="#d8d8d8"
+                    android:textSize="20dp" />
+                <!-- 색  -->
+                <TextView
+                    android:id="@+id/text_detail_color"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="2dp"
+                    android:background="#121212"
+                    android:text="색 "
+                    android:textColor="#BDBDBD"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:id="@+id/public_detail_color"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:background="#d8d8d8"
+                    android:textSize="20dp" />
+                <!-- 체중  -->
+                <TextView
+                    android:id="@+id/text_detail_weight"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="2dp"
+                    android:background="#121212"
+                    android:text="체중 "
+                    android:textColor="#BDBDBD"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:id="@+id/public_detail_weight"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:background="#d8d8d8"
+                    android:textSize="20dp" />
+                <!-- 발견장소  -->
+                <TextView
+                    android:id="@+id/text_detail_happenplace"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="2dp"
+                    android:background="#121212"
+                    android:text="발견장소 "
+                    android:textColor="#BDBDBD"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:id="@+id/public_detail_happenplace"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:paddingRight="5dp"
+                    android:background="#d8d8d8"
+                    android:textSize="15dp" />
+                <!-- 접수일  -->
+                <TextView
+                    android:id="@+id/text_detail_happendt"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="2dp"
+                    android:background="#121212"
+                    android:text="접수일 "
+                    android:textColor="#BDBDBD"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:id="@+id/public_detail_happendt"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:background="#d8d8d8"
+                    android:textSize="20dp" />
+                <!-- 공고시작일  -->
+                <TextView
+                    android:id="@+id/text_detail_noticeSdt"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="2dp"
+                    android:background="#121212"
+                    android:text="공고시작일 "
+                    android:textColor="#BDBDBD"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:id="@+id/public_detail_noticeSdt"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:background="#d8d8d8"
+                    android:textSize="20dp" />
+                <!-- 공고 종료 -->
+                <TextView
+                    android:id="@+id/text_detail_noticedt"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="2dp"
+                    android:background="#121212"
+                    android:text="공고종료 "
+                    android:textColor="#BDBDBD"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:id="@+id/public_detail_noticeedt"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:background="#d8d8d8"
+                    android:textSize="20dp" />
+                <!-- 특징 -->
+                <TextView
+                    android:id="@+id/text_detail_feature"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="2dp"
+                    android:background="#121212"
+                    android:text="특징 "
+                    android:textColor="#BDBDBD"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:id="@+id/public_detail_feature"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:background="#d8d8d8"
+                    android:textSize="20dp" />
+
+
+            </GridLayout>
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>

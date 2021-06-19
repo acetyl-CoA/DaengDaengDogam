@@ -1,38 +1,158 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="200dp"
-    android:layout_height="380dp"
-    android:layout_margin="5dp"
-    android:background="#777312"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="210dp"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="5dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginRight="5dp"
+    android:layout_marginBottom="10dp"
+    android:background="#1fffa1"
     android:orientation="vertical">
 
     <ImageView
         android:id="@+id/public_img"
-        android:layout_width="180dp"
-        android:layout_height="180dp"
-        android:layout_margin="10dp"
+
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="5dp"
         android:scaleType="centerCrop" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
+    <GridLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:columnCount="2"
+        android:layout_below="@+id/public_img">
+        <!-- 품종  -->
         <TextView
+            android:id="@+id/text_kind"
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_margin="2dp"
             android:background="#121212"
-            android:text="공고 "
+            android:text="품종 "
             android:textColor="#BDBDBD"
             android:textSize="20dp" />
+
         <TextView
-            android:id="@+id/public_notice"
+            android:id="@+id/public_kindcd"
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="2dp"
+            android:layout_margin="5dp"
             android:background="#d8d8d8"
             android:textSize="20dp" />
-    </LinearLayout>
+        <!-- 색  -->
+        <TextView
+            android:id="@+id/text_color"
 
-</LinearLayout>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="2dp"
+            android:background="#121212"
+            android:text="색 "
+            android:textColor="#BDBDBD"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/public_color"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="#d8d8d8"
+            android:textSize="20dp" />
+        <!-- 체중  -->
+        <TextView
+            android:id="@+id/text_weight"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="2dp"
+            android:background="#121212"
+            android:text="무게 "
+            android:textColor="#BDBDBD"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/public_weight"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="#d8d8d8"
+            android:textSize="20dp" />
+        <!-- 발견장소  -->
+        <TextView
+            android:id="@+id/text_happenplace"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="2dp"
+            android:background="#121212"
+            android:text="발견장소 "
+            android:textColor="#BDBDBD"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/public_happenplace"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:paddingRight="5dp"
+            android:background="#d8d8d8"
+            android:textSize="15dp" />
+        <!-- 접수일  -->
+        <TextView
+            android:id="@+id/text_happendt"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="2dp"
+            android:background="#121212"
+            android:text="접수일 "
+            android:textColor="#BDBDBD"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/public_happendt"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="#d8d8d8"
+            android:textSize="20dp" />
+        <!-- 공고 종료 -->
+        <TextView
+            android:id="@+id/text_noticedt"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="2dp"
+            android:background="#121212"
+            android:text="공고종료 "
+            android:textColor="#BDBDBD"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/public_noticeedt"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="#d8d8d8"
+            android:textSize="20dp" />
+
+
+    </GridLayout>
+
+
+</RelativeLayout>

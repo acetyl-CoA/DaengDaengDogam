@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -25,7 +26,6 @@ import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserFactory;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -40,7 +40,7 @@ import java.util.Date;
 
 
 
-public class SubActivity extends AppCompatActivity {
+public class SearchActivity extends AppCompatActivity {
     APIKEYS keys = new APIKEYS();
     int finish = 0;
     private ProgressDialog pd;
@@ -50,22 +50,23 @@ public class SubActivity extends AppCompatActivity {
 
     NaverItem NI = new NaverItem();
     PublicItem pi = null;
+    int nexstate = 0;
     
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.sub_activity);
+        setContentView(R.layout.search_activity);
 
         RecyclerView PublicView = findViewById(R.id.public_Rview);
         RecyclerView YoutubeView = findViewById(R.id.youtube_Rview);
 
-        LinearLayoutManager PublicManager = new LinearLayoutManager(SubActivity.this);
+        LinearLayoutManager PublicManager = new LinearLayoutManager(SearchActivity.this);
         PublicManager.setOrientation(LinearLayoutManager.HORIZONTAL);
         PublicView.setLayoutManager(PublicManager);
 
-        GridLayoutManager YoutubeManager = new GridLayoutManager(SubActivity.this,2);
+        GridLayoutManager YoutubeManager = new GridLayoutManager(SearchActivity.this,2);
         YoutubeView.setLayoutManager(YoutubeManager);
 
         padapter = new PublicAdapter();
@@ -96,7 +97,10 @@ public class SubActivity extends AppCompatActivity {
                         TextView headTitle = (TextView) findViewById(R.id.head_title);
                         ImageView imageView = (ImageView) findViewById(R.id.main_image);
                         TextView searchResult2 = (TextView) findViewById(R.id.search_result2);
-//
+
+                        TextView moreex = (TextView) findViewById(R.id.more);
+
+//                        System.out.println(str2);
 
                         headTitle.setText(NI.title);
                         if(NI.image == null){
@@ -105,10 +109,26 @@ public class SubActivity extends AppCompatActivity {
                         }else{
                             imageView.setImageBitmap(NI.image);
                         }
-                        searchResult2.setText("\" " + NI.summary + " \"");
+                        searchResult2.setText(NI.summary);
 
 
-//
+
+                        moreex.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                nexstate = 1 - nexstate;
+                                if(nexstate == 1){
+                                    moreex.setText(NI.ex);
+                                }
+                                else{
+                                    moreex.setText("...더보기");
+                                }
+                                // TextView 클릭될 시 할 코드작성
+                            }
+                        });
+
+
+
                         padapter.notifyDataSetChanged();
                         yadapter.notifyDataSetChanged();
 
@@ -228,7 +248,7 @@ public class SubActivity extends AppCompatActivity {
             Element name = doc.selectFirst("div.headword_title h2.headword");
             NI.title = name.text();
             Elements s = doc.getElementsByClass("summary_area");
-            NI.summary = s.text().substring(3);
+            NI.summary = " \" "+s.text().substring(3)+" \" ";
 
             if (str.contains("docId=989")) {
 
@@ -296,9 +316,6 @@ public class SubActivity extends AppCompatActivity {
                 PA = new StringBuilder(str);
             }
 
-            if(keyword=="entlebucher sennenhund"){
-
-            }
 
         } catch (IOException e) {
             return e.toString();
@@ -318,15 +335,18 @@ public class SubActivity extends AppCompatActivity {
         cal.setTime(new Date());
         DateFormat df = new SimpleDateFormat("yyyyMMdd");
         String today = df.format(cal.getTime());
-        System.out.println("current: " + today);
-        cal.add(Calendar.MONTH, -1);
+        System.out.println("today: " + today);
+        cal.add(Calendar.MONTH, +1);
+        String monthlater = df.format(cal.getTime());
+        System.out.println("later: " + monthlater);
+        cal.add(Calendar.MONTH, -2);
         String monthago = df.format(cal.getTime());
-        System.out.println("after: " + monthago);
+        System.out.println("ago: " + monthago);
 
         try {
             StringBuilder urlBuilder = new StringBuilder("http://openapi.animal.go.kr/openapi/service/rest/abandonmentPublicSrvc/abandonmentPublic"); /*URL*/
             urlBuilder.append("?" + URLEncoder.encode("serviceKey", "UTF-8") + key); /*Service Key*/
-            urlBuilder.append("&bgnde=" + monthago + "&endde=" + today + "&upkind=417000&state=protect&pageNo=1&numOfRows=10");
+            urlBuilder.append("&bgnde=" + monthago + "&endde=" + monthlater + "&upkind=417000&state=protect&pageNo=1&numOfRows=10");
 
             URL url = new URL(urlBuilder.toString());
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -537,7 +557,7 @@ public class SubActivity extends AppCompatActivity {
                 InputStream is = conn.getInputStream();
                 YI.thumbnail = BitmapFactory.decodeStream(is);
                 int imgWidth = YI.thumbnail.getWidth();
-                System.out.println("가로길이는 "+imgWidth);
+//                System.out.println("가로길이는 "+imgWidth);
                 YI.thumbnail = Bitmap.createBitmap(YI.thumbnail,0,imgWidth * 3 / 32,imgWidth,imgWidth * 9 / 16);
 
                 yadapter.addItem(YI);

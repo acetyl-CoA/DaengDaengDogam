@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
                 //final TextView searchResult = (TextView) findViewById(R.id.searchResult);
                 String keyword = searchText.getText().toString();
 
-                Intent intent = new Intent(MainActivity.this, SubActivity.class);
+                Intent intent = new Intent(MainActivity.this, SearchActivity.class);
                 intent.putExtra("keyword", keyword);
                 startActivity(intent);
                 //searchResult.setText(str);

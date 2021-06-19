@@ -2,6 +2,7 @@
     <string name="app_name">dangdang</string>
     <string name="todo">TODO</string>
     <string name="publictitle">보호 중인 강아지들</string>
-    <string name="youtubetitle">관련 검색</string>
+    <string name="youtubetitle">관련 영상 추천</string>
+    <string name="more">...더보기</string>
 
 </resources>

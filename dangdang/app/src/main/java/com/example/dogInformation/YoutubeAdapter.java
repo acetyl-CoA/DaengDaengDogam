@@ -1,10 +1,13 @@
 package com.example.dogInformation;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -27,6 +30,7 @@ public class YoutubeAdapter extends RecyclerView.Adapter<YoutubeAdapter.ItemView
     public void onBindViewHolder(@NonNull ItemViewHolder holder, int position) {
         // Item을 하나, 하나 보여주는(bind 되는) 함수입니다.
         holder.onBind(listY.get(position));
+
     }
 
     @Override
@@ -42,22 +46,39 @@ public class YoutubeAdapter extends RecyclerView.Adapter<YoutubeAdapter.ItemView
 
     // RecyclerView의 핵심인 ViewHolder 입니다.
     // 여기서 subView를 setting 해줍니다.
-    class ItemViewHolder extends RecyclerView.ViewHolder {
+    class ItemViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private ImageView imageView;
         private TextView textViewT;
-        private TextView textViewD;
+        private YoutubeItem youtubedata;
+
 
 
         ItemViewHolder(View itemView) {
             super(itemView);
+
             imageView = itemView.findViewById(R.id.youtube_img);
             textViewT = itemView.findViewById(R.id.youtube_title);
 
         }
 
         void onBind(YoutubeItem data) {
+            this.youtubedata = data;
+
+
             imageView.setImageBitmap(data.getThumbnail());
             textViewT.setText(data.getTitle());
+
+            imageView.setOnClickListener(this);
+            textViewT.setOnClickListener(this);
+            itemView.setOnClickListener(this);
+
+        }
+
+        @Override
+        public void onClick(View v) {
+            Intent webIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(youtubedata.getLink()));
+            v.getContext().startActivity(webIntent);
+
         }
     }
 }
