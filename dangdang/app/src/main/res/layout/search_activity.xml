@@ -14,10 +14,9 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="wrap_content">
 
             <ImageView
                 android:id="@+id/main_image"
@@ -26,15 +25,28 @@
                 android:adjustViewBounds="true"
                 android:src="@drawable/noimage"
                 android:contentDescription="@string/todo" />
+            <ImageView
+                android:id="@+id/star"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:adjustViewBounds="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/star_1"
+                android:scaleType="fitCenter"
+                android:contentDescription="@string/todo" />
 
             <TextView
                 android:id="@+id/search_result2"
+                android:layout_below="@+id/main_image"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/more"
+                android:layout_below="@+id/search_result2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
@@ -44,6 +56,8 @@
 
             <TextView
                 android:id="@+id/public_maintext"
+                android:layout_below="@+id/more"
+
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="40dp"
@@ -55,6 +69,7 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/public_Rview"
+                android:layout_below="@+id/public_maintext"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:scrollbars="horizontal"
@@ -65,6 +80,7 @@
 
             <TextView
                 android:id="@+id/youtube_maintext"
+                android:layout_below="@+id/public_Rview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="40dp"
@@ -75,6 +91,7 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/youtube_Rview"
+                android:layout_below="@+id/youtube_maintext"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:scrollbars="vertical"
@@ -82,7 +99,7 @@
                 android:layout_marginBottom="10dp"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 />
-        </LinearLayout>
+        </RelativeLayout>
     </ScrollView>
 
 </LinearLayout>

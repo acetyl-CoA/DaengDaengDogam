@@ -61,6 +61,7 @@ public class SearchActivity extends AppCompatActivity {
 
         RecyclerView PublicView = findViewById(R.id.public_Rview);
         RecyclerView YoutubeView = findViewById(R.id.youtube_Rview);
+        ImageView star = findViewById(R.id.star);
 
         LinearLayoutManager PublicManager = new LinearLayoutManager(SearchActivity.this);
         PublicManager.setOrientation(LinearLayoutManager.HORIZONTAL);
@@ -111,7 +112,12 @@ public class SearchActivity extends AppCompatActivity {
                         }
                         searchResult2.setText(NI.summary);
 
-
+                        star.setOnClickListener(new View.OnClickListener(){
+                            @Override
+                            public void onClick(View v){
+                                System.out.println("즐겨찾기");
+                            }
+                        });
 
                         moreex.setOnClickListener(new View.OnClickListener() {
                             @Override
@@ -146,31 +152,31 @@ public class SearchActivity extends AppCompatActivity {
     public void imageCheck(String keyword, ImageView imageView){
         System.out.println("imagecheck "+NI.image);
         System.out.println("keyword "+keyword);
-        if(keyword.equals("entlebucher sennenhund")){
+        if(keyword.equalsIgnoreCase("entlebucher sennenhund")){
             System.out.println("사진변경!");
             imageView.setImageResource(R.drawable.entlebucher_sennenhund);
         }
-        if(keyword.equals("appenzeller sennenhund")){
+        if(keyword.equalsIgnoreCase("Appenzeller Sennenhund")){
             System.out.println("사진변경!");
             imageView.setImageResource(R.drawable.appenzeller);
         }
-        if(keyword.equals("bluetick coonhound")){
+        if(keyword.equalsIgnoreCase("bluetick coonhound")){
             System.out.println("사진변경!");
             imageView.setImageResource(R.drawable.bluetick_coonhound);
         }
-        if(keyword.equals("leonberger")){
+        if(keyword.equalsIgnoreCase("leonberger")){
             System.out.println("사진변경!");
             imageView.setImageResource(R.drawable.leonberger);
         }
-        if(keyword.equals("mexican hairless")){
+        if(keyword.equalsIgnoreCase("mexican hairless")){
             System.out.println("사진변경!");
             imageView.setImageResource(R.drawable.mexican_hairless);
         }
-        if(keyword.equals("redbone coonhound")){
+        if(keyword.equalsIgnoreCase("redbone coonhound")){
             System.out.println("사진변경!");
             imageView.setImageResource(R.drawable.redbone_coonhound);
         }
-        if(keyword.equals("walker hound")){
+        if(keyword.equalsIgnoreCase("walker hound")){
             System.out.println("사진변경!");
             imageView.setImageResource(R.drawable.treeing_walker_coonhound);
         }
