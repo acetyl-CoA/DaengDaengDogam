@@ -51,6 +51,7 @@ public class SearchActivity extends AppCompatActivity {
     NaverItem NI = new NaverItem();
     PublicItem pi = null;
     int nexstate = 0;
+    int starstate = 0;
     
 
     @Override
@@ -115,6 +116,8 @@ public class SearchActivity extends AppCompatActivity {
                         star.setOnClickListener(new View.OnClickListener(){
                             @Override
                             public void onClick(View v){
+                                starstate = 1 - starstate;
+                                starCheck(starstate,star);
                                 System.out.println("즐겨찾기");
                             }
                         });
@@ -147,6 +150,15 @@ public class SearchActivity extends AppCompatActivity {
             }
         });
         thread.start();
+    }
+
+    public void starCheck(int starstate,ImageView star){
+        if(starstate==1){
+            star.setImageResource(R.drawable.star_1);
+        }
+        else{
+            star.setImageResource(R.drawable.star_2);
+        }
     }
 
     public void imageCheck(String keyword, ImageView imageView){
