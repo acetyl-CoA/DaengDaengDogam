@@ -6,7 +6,7 @@
     android:layout_marginTop="10dp"
     android:layout_marginRight="5dp"
     android:layout_marginBottom="10dp"
-    android:background="#1fffa1"
+    android:background="@color/doggo"
     android:orientation="vertical">
 
     <ImageView
@@ -31,9 +31,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_margin="2dp"
-            android:background="#121212"
             android:text="품종 "
-            android:textColor="#BDBDBD"
+            android:textColor="@color/white"
             android:textSize="20dp" />
 
         <TextView
@@ -42,7 +41,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:background="#d8d8d8"
+            android:textColor="@color/white"
             android:textSize="20dp" />
         <!-- 색  -->
         <TextView
@@ -52,9 +51,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_margin="2dp"
-            android:background="#121212"
             android:text="색 "
-            android:textColor="#BDBDBD"
+            android:textColor="@color/white"
             android:textSize="20dp" />
 
         <TextView
@@ -63,7 +61,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:background="#d8d8d8"
+            android:textColor="@color/white"
             android:textSize="20dp" />
         <!-- 체중  -->
         <TextView
@@ -73,9 +71,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_margin="2dp"
-            android:background="#121212"
             android:text="무게 "
-            android:textColor="#BDBDBD"
+            android:textColor="@color/white"
             android:textSize="20dp" />
 
         <TextView
@@ -84,7 +81,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:background="#d8d8d8"
+            android:textColor="@color/white"
             android:textSize="20dp" />
         <!-- 발견장소  -->
         <TextView
@@ -94,9 +91,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_margin="2dp"
-            android:background="#121212"
             android:text="발견장소 "
-            android:textColor="#BDBDBD"
+            android:textColor="@color/white"
             android:textSize="20dp" />
 
         <TextView
@@ -106,7 +102,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:paddingRight="5dp"
-            android:background="#d8d8d8"
+            android:textColor="@color/white"
             android:textSize="15dp" />
         <!-- 접수일  -->
         <TextView
@@ -116,9 +112,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_margin="2dp"
-            android:background="#121212"
             android:text="접수일 "
-            android:textColor="#BDBDBD"
+            android:textColor="@color/white"
             android:textSize="20dp" />
 
         <TextView
@@ -127,7 +122,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:background="#d8d8d8"
+            android:textColor="@color/white"
             android:textSize="20dp" />
         <!-- 공고 종료 -->
         <TextView
@@ -137,9 +132,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_margin="2dp"
-            android:background="#121212"
             android:text="공고종료 "
-            android:textColor="#BDBDBD"
+            android:textColor="@color/white"
             android:textSize="20dp" />
 
         <TextView
@@ -148,7 +142,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:background="#d8d8d8"
+            android:textColor="@color/white"
             android:textSize="20dp" />
 
 
