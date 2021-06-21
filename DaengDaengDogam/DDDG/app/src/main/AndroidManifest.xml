@@ -3,6 +3,7 @@
     package="com.example.dddg" >
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:allowBackup="true"
@@ -10,7 +11,9 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/dddg_icon_round"
         android:supportsRtl="true"
+        android:usesCleartextTraffic="true"
         android:theme="@style/Theme.DDDG" >
+        <activity android:name=".PublicDetail"/>
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name" >
@@ -20,6 +23,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".SearchActivity"/>
     </application>
 
 </manifest>

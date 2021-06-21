@@ -3,4 +3,8 @@
     <string name="title_home">메인화면</string>
     <string name="title_dashboard">즐겨찾기</string>
     <string name="title_notifications">공지사항</string>
+    <string name="todo">TODO</string>
+    <string name="publictitle">보호 중인 강아지들</string>
+    <string name="youtubetitle">관련 영상 추천</string>
+    <string name="more">...더보기</string>
 </resources>

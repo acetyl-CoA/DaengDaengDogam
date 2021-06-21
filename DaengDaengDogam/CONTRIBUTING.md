@@ -1,4 +1,4 @@
-# 댕댕도감 개발 관련 내용정리 (21.05.24 갱신)
+# 댕댕도감 개발 관련 내용정리 (21.06.21 갱신)
 ## 프로젝트 유의사항
 * 본 프로젝트는 부산대학교 2021년 1학기 소프트웨어설계및실험과목의 텀프로젝트와 관련된 git임을 알림.
 따라서, 일종의 Toy-project처럼 본 프로젝트가 진행되므로,
@@ -20,3 +20,7 @@
   + fragment_home(메인화면) - 메인화면, 견종의 사진을 입력으로 받아서 견종을 구분하고 관련 견종 정보를 전달하는 부분
   + fragment_dashboard(즐겨찾기) - 전용 즐겨찾기 목록을 확인하는 부분
   + fragment_notifications(공지사항) - 본 어플에서 지원하는 견종 목록이나 개발과 관련된 내용을 정리한 부분
+## 기타 유의사항
+* D:\Android\TermPJ\DDDG\DaengDaengDogam\DDDG\app\src\main\assets의 dog_clsf_tf.tflite는 용량 관계상, 따로 깃에 올리지 않음
+따라서 하단의 구글 드라이브 링크를 참고해서 해당 파일을 다운받기를 바람
+  + https://drive.google.com/file/d/19Y-5kNULgVM7h9zQ6tLqdwz_PPLqB4tw/view?usp=sharing
